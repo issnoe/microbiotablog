@@ -6,6 +6,7 @@
   "author": "Scott Cooper <scttcper@gmail.com>",
   "license": "MIT",
   "scripts": {
+    "deploy":"firebase deploy",
     "build": "gatsby build",
     "dev": "gatsby develop",
     "lint": "eslint --ext .js,.ts,.tsx .",
