@@ -22,7 +22,7 @@ export const ButtonToggle = styled.button`
 
 export const TextAreaEdit = styled.textarea`
 position: relative;
-
+margin-top: 5%;
 color: black;
 width: 100%;
 z-index: 1000;
