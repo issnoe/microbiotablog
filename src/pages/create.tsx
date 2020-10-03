@@ -21,6 +21,49 @@ import { NoImage, PostFull, PostFullHeader, PostFullTitle } from '../templates/p
 import { colors } from '../styles/colors';
 import ReactMarkdown from 'react-markdown';
 import { defaultPost } from '../data/default'
+import firebase from 'firebase';
+
+//import { useObjectVal } from "react-firebase-hooks/database"
+
+import "firebase/firestore"
+
+const config = {
+  // apiKey: ,
+  // authDomain: ,
+  // databaseURL: ,
+  // projectId: ,
+  // storageBucket: ,
+  // messagingSenderId: ,
+}
+var firebaseConfig = {
+  apiKey: "AIzaSyBg1sT0llNHmVOPAnnU8Z0QMKeeUrjXpeY",
+  authDomain: "microblog-8d530.firebaseapp.com",
+  databaseURL: "https://microblog-8d530.firebaseio.com",
+  projectId: "microblog-8d530",
+  storageBucket: "microblog-8d530.appspot.com",
+  messagingSenderId: "325509934546",
+  appId: "1:325509934546:web:69f9b99408d22628a7ec0b"
+};
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+
+function TestFireBase() {
+  const [data, setData] = React.useState(null)
+
+  React.useEffect(() => {
+    firebase
+      .database()
+      .ref("/post")
+      .once("value")
+      .then(snapshot => {
+        debugger
+        setData(snapshot.val())
+      })
+  }, [])
+
+  return <div>{data ? data : "Loading..."}</div>
+}
+
 
 
 const PageTemplate = css`
@@ -47,6 +90,7 @@ const Create: React.FC = () => {
       <Helmet>
         <title>New post</title>
       </Helmet>
+
       <Wrapper css={PageTemplate}>
         <header className="site-archive-header no-image" css={[SiteHeader, SiteArchiveHeader]}>
           <div css={[outer, SiteNavMain]}>
@@ -63,6 +107,7 @@ const Create: React.FC = () => {
           }
           {!toggle && <div css={inner}>
             <article className="post page" css={[PostFull, NoImage]}>
+              <TestFireBase></TestFireBase>
               <PostFullHeader className="post-full-header">
                 <PostFullTitle className="post-full-title">Create</PostFullTitle>
               </PostFullHeader>

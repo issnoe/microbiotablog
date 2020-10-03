@@ -11,6 +11,7 @@ module.exports = {
     'MarkdownRemark.frontmatter.author': 'AuthorYaml',
   },
   plugins: [
+
     'gatsby-plugin-sitemap',
     {
       resolve: 'gatsby-plugin-sharp',
@@ -87,5 +88,19 @@ module.exports = {
         siteSpeedSampleRate: 10,
       },
     },
+    {
+      resolve: "gatsby-plugin-firebase",
+      options: {
+        credentials: {
+          apiKey: "AIzaSyBg1sT0llNHmVOPAnnU8Z0QMKeeUrjXpeY",
+          authDomain: "microblog-8d530.firebaseapp.com",
+          databaseURL: "https://microblog-8d530.firebaseio.com",
+          projectId: "microblog-8d530",
+          storageBucket: "microblog-8d530.appspot.com",
+          messagingSenderId: "325509934546",
+          appId: "1:325509934546:web:69f9b99408d22628a7ec0b"
+        }
+      }
+    }
   ],
 };
